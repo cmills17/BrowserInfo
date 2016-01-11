@@ -33,4 +33,19 @@
 	if (state_s.equals("United Kingdom")){
 		region = 0.2;}
 	
-	double totalCost = (watts/1000)*powerOn_n*region;
+	
+	
+	
+//we need to factor in the length of time they want to keep the comptuer into the total electricity cost. 
+	
+	double electricityCost = (watts/1000)*powerOn_n*region;
+	
+	
+//when x is the input of years intended to keep the computer	
+	double batteryCost= 0;
+	if (laptopType_s.equals("Desktop")){
+		batteryCost = ((Math.ceil(x/4))-1)*7;}
+	if (laptopType_s.equals("Laptop")){
+		batteryCost = ((Math.ceil(x/3))-1)*275;}
+	
+	

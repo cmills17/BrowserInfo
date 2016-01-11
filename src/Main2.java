@@ -96,7 +96,7 @@ public class Main2 {
 		wattage.add(120);}
 	if (Arrays.asList(options).contains("50''")){
 		wattage.add(150);}
-	if (Arrays.asList(options).contains("1 Core''")){
+	if (Arrays.asList(options).contains("1 Core")){
 		wattage.add(69);}
 	if (Arrays.asList(options).contains("2 Cores")){
 		wattage.add(74.5);}

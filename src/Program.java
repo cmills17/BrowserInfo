@@ -5,11 +5,11 @@ import java.awt.event.*;
 
 public class Program {
 	
-	JTextField computercost = new JTextField();
-	JLabel computercost_q = new JLabel ("What is the cost of the computer? (dollars)");
+	JTextField computercost = new JTextField(); // This makes a text field, where the user can input numbers.
+	JLabel computercost_q = new JLabel ("What is the cost of the computer? (dollars)"); // This displays text, we ask questions with this.
 
-	String[] laptoptype_choices = {"Laptop","Desktop"};
-	JComboBox laptoptype = new JComboBox(laptoptype_choices);
+	String[] laptoptype_choices = {"Laptop","Desktop"}; //This defines the choices in the drop down box.
+	JComboBox laptoptype = new JComboBox(laptoptype_choices); // This creates a drop down box.
 	JLabel laptoptype_q = new JLabel ("Computer type");
 
 	String[] screensize_choices = {"15''", "17''","19''", "20''","21''","22''","24''","30''","32''","37''","42''","50''"};
@@ -42,10 +42,10 @@ public class Program {
 	JTextField powerOn = new JTextField();
 	JLabel powerOn_q = new JLabel ("How many hours a day do you leave the power on?");
 	
-	JButton calculate = new JButton("Calculate");
+	JButton calculate = new JButton("Calculate"); // This creates a button.
 	
-	JLabel emptyspace = new JLabel ("");
-	JLabel computer_costcalculations = new JLabel ("");
+	JLabel emptyspace = new JLabel (""); //This creates an empty space, so the GUI looks nice.
+	JLabel computer_costcalculations = new JLabel (""); //This creates a text. When the calculate button is clicked, the text will change.
 	JLabel electricity_costcalculations = new JLabel ("");
 	JLabel battery_costcalculations = new JLabel ("");
 	JLabel total_costcalculations = new JLabel ("");
@@ -54,18 +54,18 @@ public class Program {
 	
 	public Program() {
 		
-		frame();
+		frame(); // This creates a frame. The frame is the pop up window.
 	}
 	
 public void frame() {
 	
 	JFrame f = new JFrame();
-	f.setVisible(true);
-	f.setSize(700,500);
-	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	f.setVisible(true); // The pop up window is now visible.
+	f.setSize(700,500); // The pop up window has these dimensions.
+	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //The pop up window can be closed now by clicking close.
 	
-	JPanel p = new JPanel(new GridLayout(0,2));
-	p.add(computercost_q);
+	JPanel p = new JPanel(new GridLayout(0,2)); //We must make a panel. The Gridlayout allows us to organize the features in two columns.
+	p.add(computercost_q); // On the panel, we add the different features (JLabel, JComboBox, JButton, etc.)
 	p.add(computercost);
 	p.add(laptoptype_q);
 	p.add(laptoptype);
@@ -93,11 +93,11 @@ public void frame() {
 	p.add(battery_costcalculations);
 	p.add(total_costcalculations);
 
-	f.add(p);
+	f.add(p); // Now we add the panel to the frame.
 
-	calculate.addActionListener(new ActionListener () {
+	calculate.addActionListener(new ActionListener () { //When the button is clicked...
 		public void actionPerformed (ActionEvent e) {
-			String laptoptype_s = laptoptype.getSelectedItem().toString();
+			String laptoptype_s = laptoptype.getSelectedItem().toString(); // Obtain the answer choice from the drop down box.
 			String screensize_s = screensize.getSelectedItem().toString();
 			String corenumber_s = corenumber.getSelectedItem().toString();
 			String brandOfCPU_s = brandOfCPU.getSelectedItem().toString();
@@ -105,9 +105,9 @@ public void frame() {
 			String hardDrive_s = hardDrive.getSelectedItem().toString();
 			String state_s = state.getSelectedItem().toString();
 			
-			String computercost_s = computercost.getText();			
-			double computercost_n = Double.parseDouble(computercost_s);
-			computercost_n = ((int)(computercost_n*100))/100.0;
+			String computercost_s = computercost.getText();	// Obtain the input in the text field as a string.		
+			double computercost_n = Double.parseDouble(computercost_s); // This converts the string into a double.
+			computercost_n = ((int)(computercost_n*100))/100.0; // This rounds the variable to the 2nd decimal point.
 
 			String powerOn_s = powerOn.getText();			
 			double powerOn_n = Double.parseDouble(powerOn_s);
@@ -115,7 +115,7 @@ public void frame() {
 			String computerKeep_s = computerKeep.getText();			
 			double computerKeep_n = Double.parseDouble(computerKeep_s);
 			
-			double watts = 0;
+			double watts = 0; // Create a variable and add to this variable when if statements are met.
 			double region = 0;
 
 			if (laptoptype_s.equals("Desktop")){
@@ -224,7 +224,7 @@ public void frame() {
 			if (state_s.equals("United Kingdom")){
 				region = 0.2;}
 			
-			double electricityCost = (watts/1000)*powerOn_n*computerKeep_n*365*region;
+			double electricityCost = (watts/1000)*powerOn_n*computerKeep_n*365*region; // This is our formula for the electricity cost.
 			electricityCost = ((int)(electricityCost*100))/100.0;
 			double totalCost = computercost_n + electricityCost;
 			totalCost = ((int)(totalCost*100))/100.0;
@@ -236,7 +236,7 @@ public void frame() {
 				batteryCost = ((Math.ceil(computerKeep_n/3))-1)*275;}
 			
 			
-			computer_costcalculations.setText("Computer Cost: $" + computercost_n);
+			computer_costcalculations.setText("Computer Cost: $" + computercost_n); // Set the text in the JLabel to this.
 			electricity_costcalculations.setText("Electricity Cost: $" + electricityCost);
 			battery_costcalculations.setText("Battery Cost: $" + batteryCost);
 			total_costcalculations.setFont(new Font("Calibri", Font.BOLD, 16));

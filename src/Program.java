@@ -116,9 +116,11 @@ public void frame() {
 			double computerKeep_n = Double.parseDouble(computerKeep_s);
 			
 			double watts = 0; // Create a variable and add to this variable when if statements are met.
-			double region = 0;
+			double region = 0; //create an empty variable that will be filled with the multiplier based on selected state
 
-			if (laptoptype_s.equals("Desktop")){
+			//if statements that connect the dropdown list items to the corresponding watt usage data gathered through research
+			//adds to the variable "watts" to generate the sum of all selected choices
+			if (laptoptype_s.equals("Desktop")){	
 				watts = watts + 120;}
 			if (laptoptype_s.equals("Laptop")){
 				watts = watts + 35;}
@@ -189,6 +191,7 @@ public void frame() {
 			if (hardDrive_s.equals("3.5'' Hard Disk Drive HHD")){
 				watts = watts + 7.75;}
 			
+			//sets the region variable equal to a multiplier based on the electricity cost of the selected region
 			if (state_s.equals("CA")){
 				region = 0.135;}
 			if (state_s.equals("CT")){
@@ -229,10 +232,12 @@ public void frame() {
 			double totalCost = computercost_n + electricityCost;
 			totalCost = ((int)(totalCost*100))/100.0;
 			
+			//formula for the battery cost. Divides the intended life of the computer by how often the battery needs to be replaced,
+			//rounds up (because you can't have half of a battery), subtracts 1 for the battery that comes with the computer, multiples by the cost of replacement battery
 			double batteryCost= 0;
-			if (laptoptype.equals("Desktop")){
+			if (laptoptype_s.equals("Desktop")){
 				batteryCost = ((Math.ceil(computerKeep_n/4))-1)*7;}
-			if (laptoptype.equals("Laptop")){
+			if (laptoptype_s.equals("Laptop")){
 				batteryCost = ((Math.ceil(computerKeep_n/3))-1)*275;}
 			
 			

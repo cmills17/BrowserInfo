@@ -1,0 +1,36 @@
+	if (state_s.equals("CA")){
+		region = 0.135;}
+	if (state_s.equals("CT")){
+		region = 0.155;}
+	if (state_s.equals("D.C.")){
+		region = 0.119;}
+	if (state_s.equals("FL")){
+		region = 0.104;}
+	if (state_s.equals("IL")){
+		region = 0.084;}
+	if (state_s.equals("MA")){
+		region = 0.138;}
+	if (state_s.equals("NH")){
+		region = 0.142;}
+	if (state_s.equals("NJ")){
+		region = 0.137;}
+	if (state_s.equals("NC")){
+		region = 0.0915;}
+	if (state_s.equals("TX")){
+		region = 0.0855;}
+	if (state_s.equals("USA")){
+		region = 0.0984;}
+	if (state_s.equals("Canada")){
+		region = 0.0905;}
+	if (state_s.equals("Hong Kong")){
+		region = 0.1801;}
+	if (state_s.equals("India")){
+		region = 0.1;}
+	if (state_s.equals("Mexico")){
+		region = 0.1928;}
+	if (state_s.equals("Singapore")){
+		region = 0.2153;}
+	if (state_s.equals("United Kingdom")){
+		region = 0.2;}
+	
+	double totalCost = (watts/1000)*powerOn_n*region;

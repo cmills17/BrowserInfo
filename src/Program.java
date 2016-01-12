@@ -229,8 +229,6 @@ public void frame() {
 			
 			double electricityCost = (watts/1000)*powerOn_n*computerKeep_n*365*region; // This is our formula for the electricity cost.
 			electricityCost = ((int)(electricityCost*100))/100.0;
-			double totalCost = computercost_n + electricityCost;
-			totalCost = ((int)(totalCost*100))/100.0;
 			
 			//formula for the battery cost. Divides the intended life of the computer by how often the battery needs to be replaced,
 			//rounds up (because you can't have half of a battery), subtracts 1 for the battery that comes with the computer, multiples by the cost of replacement battery
@@ -240,6 +238,8 @@ public void frame() {
 			if (laptoptype_s.equals("Laptop")){
 				batteryCost = ((Math.ceil(computerKeep_n/3))-1)*275;}
 			
+			double totalCost = computercost_n + electricityCost + batteryCost;
+			totalCost = ((int)(totalCost*100))/100.0;
 			
 			computer_costcalculations.setText("Computer Cost: $" + computercost_n); // Set the text in the JLabel to this.
 			electricity_costcalculations.setText("Electricity Cost: $" + electricityCost);

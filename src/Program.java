@@ -1,9 +1,10 @@
 import javax.swing.*;
+import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 
 
-public class Program {
+public class Program extends Applet {
 	
 	JTextField computercost = new JTextField(); // This makes a text field, where the user can input numbers.
 	JLabel computercost_q = new JLabel ("What is the cost of the computer? (dollars)"); // This displays text, we ask questions with this.
@@ -59,10 +60,10 @@ public class Program {
 	
 public void frame() {
 	
-	JFrame f = new JFrame();
-	f.setVisible(true); // The pop up window is now visible.
-	f.setSize(700,500); // The pop up window has these dimensions.
-	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //The pop up window can be closed now by clicking close.
+	//JFrame f = new JFrame();
+	//f.setVisible(true); // The pop up window is now visible.
+	//f.setSize(700,500); // The pop up window has these dimensions.
+	//f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //The pop up window can be closed now by clicking close.
 	
 	JPanel p = new JPanel(new GridLayout(0,2)); //We must make a panel. The Gridlayout allows us to organize the features in two columns.
 	p.add(computercost_q); // On the panel, we add the different features (JLabel, JComboBox, JButton, etc.)
@@ -93,7 +94,7 @@ public void frame() {
 	p.add(battery_costcalculations);
 	p.add(total_costcalculations);
 
-	f.add(p); // Now we add the panel to the frame.
+	this.add(p); // Now we add the panel to the frame.
 
 	calculate.addActionListener(new ActionListener () { //When the button is clicked...
 		public void actionPerformed (ActionEvent e) {

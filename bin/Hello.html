@@ -1,0 +1,125 @@
+<html> 
+<head> 
+<title>Browser Detection</Title> 
+<Script Language="JavaScript"> 
+var objappVersion = navigator.appVersion;
+var objcookiesEnabled = navigator.cookieEnabled;
+var objjavaEnabled = navigator.javaEnabled();
+var objAgent = navigator.userAgent; 
+var objbrowserName = navigator.appName; 
+var objfullVersion = ''+parseFloat(navigator.appVersion); 
+var objBrMajorVersion = parseInt(navigator.appVersion,10); 
+var objOffsetName,objOffsetVersion,ix; 
+
+if ((objOffsetVersion=objAgent.indexOf("Chrome"))!=-1) { 
+	objbrowserName = "Chrome"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+7); 
+} 
+
+else if ((objOffsetVersion=objAgent.indexOf("MSIE"))!=-1) { 
+	objbrowserName = "Microsoft Internet Explorer"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+5); 
+} 
+
+else if ((objOffsetVersion=objAgent.indexOf("Firefox"))!=-1) { 
+	objbrowserName = "Firefox"; 
+	{
+		var ffversion = new Number(RegExp.$1)
+		if (ffversion<43.0)
+			document.write(''
+				+"</br>\n<h2>Your browser is out of date. Please download an updated version.</h2>"
+				+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.\n");
+		else if (ffversion>=43.0)
+			document.write(''
+				+"</br>\n<h2>Hello");
+	}
+} 
+
+else if ((objOffsetVersion=objAgent.indexOf("Safari"))!=-1) { 
+	objbrowserName = "Safari"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+7); 
+	if ((objOffsetVersion=objAgent.indexOf("Version"))!=-1) objfullVersion = objAgent.substring(objOffsetVersion+8); 
+} 
+
+else if ( (objOffsetName=objAgent.lastIndexOf(' ')+1) < 
+	(objOffsetVersion=objAgent.lastIndexOf('/')) ) 
+{ 
+	objbrowserName = objAgent.substring(objOffsetName,objOffsetVersion); objfullVersion = objAgent.substring(objOffsetVersion+1); if (objbrowserName.toLowerCase()==objbrowserName.toUpperCase()) { objbrowserName = navigator.appName; 
+	} 
+} 
+
+
+if (objbrowserName=="Firefox"){
+	document.write(''
+	+'\nBrowser name: '+objbrowserName
+	+'</br>\nAppName: '+navigator.appName
+	+'</br>\nUserAgent: '+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled());
+}
+
+else if (objbrowserName=="Chrome"){
+	document.write(''
+	+'\nBrowser name: '+objbrowserName
+	+'</br>\nAppName: '+navigator.appName
+	+'</br>\nUserAgent: '+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
+	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
+}
+
+else if (objbrowserName=="Safari") {
+	document.write(''
+	+'\nBrowser name: '+objbrowserName
+	+'</br>\nAppName: '+navigator.appName
+	+'</br>\nUserAgent: '+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
+	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox."
+	+"</br>\nClick <a href=\"http://www.seamonkey-project.org/releases/\">here</a> to download Seamonkey.");
+}
+
+else if (objbrowserName=="Internet Explorer") {
+	document.write(''
+	+'\nBrowser name: '+objbrowserName
+	+'</br>\nAppName: '+navigator.appName
+	+'</br>\nUserAgent: '+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
+	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
+}
+
+else if (objbrowserName=="Opera") {
+	document.write(''
+	+'\nBrowser name:'+objbrowserName
+	+'</br>\nAppName:'+navigator.appName
+	+'</br>\nUserAgent:'+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
+	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
+}
+
+else if (objbrowserName=="Avant") {
+	document.write(''
+	+'\nBrowser name:'+objbrowserName
+	+'</br>\nAppName:'+navigator.appName
+	+'</br>\nUserAgent:'+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
+	+"</br>\n<h2>This browser is supported, but will likely result in technical difficulties. Please update to the recommended browser:</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
+}
+
+else if (objbrowserName=="Seamonkey") {desination="http://www.deerfield.edu"};
+
+
+</script> 
+</head> 
+<body> 
+</body> 
+</html> 
+

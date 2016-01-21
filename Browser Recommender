@@ -1,0 +1,26 @@
+//Define variables taht serve as the generic alerts that can be displayed based on the possible browser circumstances
+var browserNotSupported = alert ("Your Browswer is not supported, please download 			another browser");
+var browserNotAlwaysSupported = alert ("Your Browswer is supported, but will likely 		result in technical difficulties, it is reccommended that you update a 				different browser");
+var browserOutdated = alert ("Your Browswer is out of date, please download an 	up 			to date version");
+var pluginOutdated = alert ("Your Java Plugin is out of date, please download an up 		to date version")
+
+//Test to see if the browser that is running is unsupported, display corresponding message
+if (browsername == "Chrome") {browserNotSupported};
+if (browsername == "Safari") {browserNotSupported};
+if (browsername == "Internet Explorer") {browserNotSupported};
+if (browsername == "Opera") {browserNotSupported};
+if (browsername == "Avant") {browserNotAlwaysSupported};
+
+//Test to see if the browser that is running is supported, with updated version and plugin
+if (browsername == "Seamonkey") {
+	if (browserversion< 2.39){browserOutdated & redirect to http://www.seamonkey-project.org/releases/} else {DO NOTHING};
+	if (pluginversion< 1.8.0_66){pluginOutdated} else {DO NOTHING};
+}
+
+if (browsername == "Firefox") {
+	if (browserversion< 43.0.4){browserOutdated and https://www.mozilla.org/en-US/firefox/new/} else {DO NOTHING};
+	if (pluginversion< 1.8.0_66){pluginOutdated} else {DO NOTHING};
+}
+
+
+if (alert== pluginOutdated) redirect to http://www.java.com/en/download/manual.jsp

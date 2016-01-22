@@ -1,7 +1,9 @@
 <html> 
 <head> 
 <title>Browser Detection</Title> 
-<Script Language="JavaScript"> 
+
+<script>
+
 var objappVersion = navigator.appVersion;
 var objcookiesEnabled = navigator.cookieEnabled;
 var objjavaEnabled = navigator.javaEnabled();
@@ -10,6 +12,29 @@ var objbrowserName = navigator.appName;
 var objfullVersion = ''+parseFloat(navigator.appVersion); 
 var objBrMajorVersion = parseInt(navigator.appVersion,10); 
 var objOffsetName,objOffsetVersion,ix; 
+
+function displayInfo() {
+	document.write(''
+	+'\nBrowser name: '+objbrowserName
+	+'</br>\nAppName: '+navigator.appName
+	+'</br>\nUserAgent: '+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled());
+}
+
+function browserNotSupported(){
+	document.write(''
+	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox."
+	+"</br>\nClick <a href=\"http://www.seamonkey-project.org/releases/\">here</a> to download Seamonkey.");
+}
+
+function browserMaybeSupported(){
+	document.write(''
+	+"</br>\n<h2>This browser is supported, but will likely result in technical difficulties. Please update to the recommended browser:</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox."
+	+"</br>\nClick <a href=\"http://www.seamonkey-project.org/releases/\">here</a> to download Seamonkey.");
+}
 
 if ((objOffsetVersion=objAgent.indexOf("Chrome"))!=-1) { 
 	objbrowserName = "Chrome"; 
@@ -50,71 +75,32 @@ else if ( (objOffsetName=objAgent.lastIndexOf(' ')+1) <
 
 
 if (objbrowserName=="Firefox"){
-	document.write(''
-	+'\nBrowser name: '+objbrowserName
-	+'</br>\nAppName: '+navigator.appName
-	+'</br>\nUserAgent: '+navigator.userAgent
-	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
-	+'</br>\nIs Java installed? ' + navigator.javaEnabled());
+	displayInfo();
+}
+
+else if (objbrowserName=="Seamonkey") {
+	displayInfo();
 }
 
 else if (objbrowserName=="Chrome"){
-	document.write(''
-	+'\nBrowser name: '+objbrowserName
-	+'</br>\nAppName: '+navigator.appName
-	+'</br>\nUserAgent: '+navigator.userAgent
-	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
-	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
-	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
-	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
-}
+	displayInfo()
+	browserNotSupported();}
 
 else if (objbrowserName=="Safari") {
-	document.write(''
-	+'\nBrowser name: '+objbrowserName
-	+'</br>\nAppName: '+navigator.appName
-	+'</br>\nUserAgent: '+navigator.userAgent
-	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
-	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
-	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
-	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox."
-	+"</br>\nClick <a href=\"http://www.seamonkey-project.org/releases/\">here</a> to download Seamonkey.");
-}
+	displayInfo()
+	browserNotSupported();}
 
-else if (objbrowserName=="Internet Explorer") {
-	document.write(''
-	+'\nBrowser name: '+objbrowserName
-	+'</br>\nAppName: '+navigator.appName
-	+'</br>\nUserAgent: '+navigator.userAgent
-	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
-	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
-	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
-	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
-}
+else if (objbrowserName=="Internet Explorer") {	
+	displayInfo()
+	browserNotSupported();}
 
 else if (objbrowserName=="Opera") {
-	document.write(''
-	+'\nBrowser name:'+objbrowserName
-	+'</br>\nAppName:'+navigator.appName
-	+'</br>\nUserAgent:'+navigator.userAgent
-	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
-	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
-	+"</br>\n<h2>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h2>"
-	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
-}
+	displayInfo()
+	browserNotSupported();}
 
 else if (objbrowserName=="Avant") {
-	document.write(''
-	+'\nBrowser name:'+objbrowserName
-	+'</br>\nAppName:'+navigator.appName
-	+'</br>\nUserAgent:'+navigator.userAgent
-	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
-	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
-	+"</br>\n<h2>This browser is supported, but will likely result in technical difficulties. Please update to the recommended browser:</h2>"
-	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.");
-}
-
-else if (objbrowserName=="Seamonkey") {desination="http://www.deerfield.edu"};
+	displayInfo()
+	browserMaybeSupported();}
 
 
 </script> 

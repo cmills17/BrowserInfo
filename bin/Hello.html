@@ -11,6 +11,9 @@ var objbrowserName = navigator.appName;
 var objfullVersion = ''+parseFloat(navigator.appVersion); 
 var objBrMajorVersion = parseInt(navigator.appVersion,10); 
 var objOffsetName,objOffsetVersion,ix; 
+var hide = false;
+
+
 
 function displayInfo() {
 	document.write(''
@@ -40,6 +43,18 @@ if ((objOffsetVersion=objAgent.indexOf("Chrome"))!=-1) {
 	objfullVersion = objAgent.substring(objOffsetVersion+7); 
 } 
 
+else if ((objOffsetVersion=objAgent.indexOf("Seamonkey"))!=-1) { 
+	objbrowserName = "Seamonkeyr"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+5); 
+} 
+else if ((objOffsetVersion=objAgent.indexOf("Opera"))!=-1) { 
+	objbrowserName = "Opera"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+6);
+	if ((objOffsetVersion=objAgent.indexOf("Version"))!=-1) {
+		objfullVersion = obj.substring(objOffsetVersion+8);
+	} 
+} 
+
 else if ((objOffsetVersion=objAgent.indexOf("MSIE"))!=-1) { 
 	objbrowserName = "Microsoft Internet Explorer"; 
 	objfullVersion = objAgent.substring(objOffsetVersion+5); 
@@ -48,14 +63,16 @@ else if ((objOffsetVersion=objAgent.indexOf("MSIE"))!=-1) {
 else if ((objOffsetVersion=objAgent.indexOf("Firefox"))!=-1) { 
 	objbrowserName = "Firefox"; 
 	{
-		var ffversion = new Number(RegExp.$1)
-		if (ffversion<43.0)
+		var split = navigator.userAgent.split("/");
+		var ffversion = new Number(split[split.length - 1])
+		if (ffversion<43.0){
 			document.write(''
 				+"</br>\n<h2>Your browser is out of date. Please download an updated version.</h2>"
 				+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.\n");
-		else if (ffversion>=43.0)
-			document.write(''
-				+"</br>\n<h2>Hello");
+		}
+		else if (ffversion>=43.0){
+			hide = true;
+		}
 	}
 } 
 
@@ -65,14 +82,9 @@ else if ((objOffsetVersion=objAgent.indexOf("Safari"))!=-1) {
 	if ((objOffsetVersion=objAgent.indexOf("Version"))!=-1) objfullVersion = objAgent.substring(objOffsetVersion+8); 
 } 
 
-else if ( (objOffsetName=objAgent.lastIndexOf(' ')+1) < 
-	(objOffsetVersion=objAgent.lastIndexOf('/')) ) 
-{ 
-	objbrowserName = objAgent.substring(objOffsetName,objOffsetVersion); objfullVersion = objAgent.substring(objOffsetVersion+1); if (objbrowserName.toLowerCase()==objbrowserName.toUpperCase()) { objbrowserName = navigator.appName; 
-	} 
-} 
 
 
+if(!hide){
 if (objbrowserName=="Firefox"){
 	displayInfo();
 }
@@ -101,10 +113,11 @@ else if (objbrowserName=="Avant") {
 	displayInfo()
 	browserMaybeSupported();}
 
-
+}
 </script> 
 </head> 
 <body> 
+	<APPLET CODE="Program.class" WIDTH=1500 HEIGHT=350
 </body> 
 </html> 
 

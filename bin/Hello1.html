@@ -1,0 +1,37 @@
+<html> 
+<head> 
+
+<title>Browser Detection</Title> 
+<Script Language="JavaScript"> 
+var objappVersion = navigator.appVersion;
+var objcookiesEnabled = navigator.cookieEnabled;
+var objjavaEnabled = navigator.javaEnabled();
+var objAgent = navigator.userAgent; 
+var objbrowserName = navigator.appName; 
+var objfullVersion = ''+parseFloat(navigator.appVersion); 
+var objBrMajorVersion = parseInt(navigator.appVersion,10); 
+var objOffsetName,objOffsetVersion,ix; 
+
+if ((objOffsetVersion=objAgent.indexOf("Firefox"))!=-1) { 
+	objbrowserName = "Firefox"; 
+	<APPLET CODE="Program.class" WIDTH=1500 HEIGHT=2500>);
+	}
+
+if (objbrowserName=="Firefox"){
+	document.write(''
+	+'\nBrowser name: '+objbrowserName
+	+'</br>\nAppName: '+navigator.appName
+	+'</br>\nUserAgent: '+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled());
+}
+
+
+
+</script> 
+</applet>
+</head> 
+<body>
+</body> 
+</html> 
+

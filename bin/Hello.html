@@ -1,8 +1,15 @@
 <html> 
 <head> 
 <title>Browser Detection</Title> 
-<script>
+<Script src="http://www.java.com/js/deployJava.js"></Script>
+<style>
+body{
+	background-color: #blue;
+}
+</style>
+<Script>
 
+var versions= deployJava.getJREs();
 var objappVersion = navigator.appVersion;
 var objcookiesEnabled = navigator.cookieEnabled;
 var objjavaEnabled = navigator.javaEnabled();
@@ -21,7 +28,8 @@ function displayInfo() {
 	+'</br>\nAppName: '+navigator.appName
 	+'</br>\nUserAgent: '+navigator.userAgent
 	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
-	+'</br>\nIs Java installed? ' + navigator.javaEnabled());
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
+	+'</br>\nJava version? ' + (versions)	);
 }
 
 function browserNotSupported(){
@@ -36,6 +44,12 @@ function browserMaybeSupported(){
 	+"</br>\n<h2>This browser is supported, but will likely result in technical difficulties. Please update to the recommended browser:</h2>"
 	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox."
 	+"</br>\nClick <a href=\"http://www.seamonkey-project.org/releases/\">here</a> to download Seamonkey.");
+}
+
+function browserOutOfDate(){
+	document.write(''
+	+"</br>\n<h2>Your browser is out of date. Your application may still run, but if technical difficulties are experienced, it is recommended that you download an updated version of your browser</h2>"
+	+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.\n");
 }
 
 if ((objOffsetVersion=objAgent.indexOf("Chrome"))!=-1) { 
@@ -65,11 +79,9 @@ else if ((objOffsetVersion=objAgent.indexOf("Firefox"))!=-1) {
 	{
 		var split = navigator.userAgent.split("/");
 		var ffversion = new Number(split[split.length - 1])
-		if (ffversion<43.0){
-			document.write(''
-				+"</br>\n<h2>Your browser is out of date. Please download an updated version.</h2>"
-				+"</br>\nClick <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.\n");
+		if (ffversion<43.0){browserOutOfDate();		
 		}
+
 		else if (ffversion>=43.0){
 			hide = true;
 		}
@@ -86,8 +98,7 @@ else if ((objOffsetVersion=objAgent.indexOf("Safari"))!=-1) {
 
 if(!hide){
 if (objbrowserName=="Firefox"){
-	displayInfo();
-}
+	displayInfo();}
 
 else if (objbrowserName=="Seamonkey") {
 	displayInfo();

@@ -1,0 +1,134 @@
+<html> 
+<head> 
+<style> 
+h1 {
+	color: red;
+}
+
+h3 {
+	color: #00CED1;
+}
+h4 {
+	color: lightgreen;
+}
+a:link {
+	color: purple;
+}
+</style>
+<title>Browser Detection</Title> 
+<Script src="http://www.java.com/js/deployJava.js"></Script>
+<Script>
+//We set various variables to determine the browser name, appname, useragent, whether cookies and java are installed, and if yes, which version of java is installed//
+//Got help from: http://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser, http://mrbool.com/how-to-detect-different-browsers-and-their-versions-using-javascript/2542, http://docs.oracle.com/javase/6/docs/technotes/guides/jweb/deployment_advice.html#deplToolkit//
+
+var versions= deployJava.getJREs();
+var objappVersion = navigator.appVersion;
+var objcookiesEnabled = navigator.cookieEnabled;
+var objjavaEnabled = navigator.javaEnabled();
+var objAgent = navigator.userAgent; 
+var objbrowserName = navigator.appName; 
+var objfullVersion = ''+parseFloat(navigator.appVersion); 
+var objBrMajorVersion = parseInt(navigator.appVersion,10); 
+var objOffsetName,objOffsetVersion,ix; 
+//we set this variable so when the applet runs in a browser, the excessive details about the browser info. doesn't show up.//
+var hide = false;
+
+//We set a function called "displayInfo" so that the information about each browser shows up when the applet doesn't run.//
+function displayInfo() {
+	document.write(''
+	+'\n<h3>Browser name: '+objbrowserName
+	+'</br>\nAppName: '+navigator.appName
+	+'</br>\nUserAgent: '+navigator.userAgent
+	+'</br>\nAre Cookies enabled? '+navigator.cookieEnabled
+	+'</br>\nIs Java installed? ' + navigator.javaEnabled()
+	+'</br>\nJava version? </h3>' + (versions)	);
+}
+//This is a function that sets the messages when the browser does not support the applet//
+function browserNotSupported(){
+	document.write(''
+	+"</br>\n<h1>This browser is not supported. The Applet requires one of the following up-to-date browsers:</h1>"
+	+"</br>\n<h4>Click <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.</h4>"
+	+"</br>\n<h4>Click <a href=\"http://www.seamonkey-project.org/releases/\">here</a> to download Seamonkey.</h4>");
+}
+
+//This is a function that sets the messages when the browser supports the applet to a minimal degree//
+function browserMaybeSupported(){
+	document.write(''
+	+"</br>\n<h1>This browser is supported, but will likely result in technical difficulties. Please update to the recommended browser:</h1>"
+	+"</br>\n<h4>Click <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.</h34>"
+	+"</br>\n<h4>Click <a href=\"http://www.seamonkey-project.org/releases/\">here</a> to download Seamonkey.</h4>");
+}
+
+//This is a function that sets the messages when the browser is out of date//
+function browserOutOfDate(){
+	document.write(''
+	+"</br>\n<h1>Your browser is out of date. Your application may still run, but if technical difficulties are experienced, it is recommended that you download an updated version of your browser</h1>"
+	+"</br>\n<h4>Click <a href=\"https://www.mozilla.org/en-US/firefox/new/\">here</a> to download Firefox.\n</h4>");
+}
+//this defines the variable "objbrowserName" as the name of the browser so tha
+if ((objOffsetVersion=objAgent.indexOf("Chrome"))!=-1) { 
+	objbrowserName = "Chrome"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+7); 
+} 
+else if ((objOffsetVersion=objAgent.indexOf("Seamonkey"))!=-1) { 
+	objbrowserName = "Seamonkeyr"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+5); 
+} 
+else if ((objOffsetVersion=objAgent.indexOf("Opera"))!=-1) { 
+	objbrowserName = "Opera"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+6);
+	if ((objOffsetVersion=objAgent.indexOf("Version"))!=-1) {
+		objfullVersion = obj.substring(objOffsetVersion+8);
+	} 
+} 
+else if ((objOffsetVersion=objAgent.indexOf("MSIE"))!=-1) { 
+	objbrowserName = "Microsoft Internet Explorer"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+5); 
+} 
+else if ((objOffsetVersion=objAgent.indexOf("Firefox"))!=-1) { 
+	objbrowserName = "Firefox"; 
+//this determines which version of Firefox you have. spilting the userAgent string, we determined if the version was outdated or not. 
+	{
+		var split = navigator.userAgent.split("/");
+		var ffversion = new Number(split[split.length - 1])
+		if (ffversion<43.0){browserOutOfDate();		
+		}
+		else if (ffversion>=43.0){
+			hide = true;
+		}
+	}
+} 
+else if ((objOffsetVersion=objAgent.indexOf("Safari"))!=-1) { 
+	objbrowserName = "Safari"; 
+	objfullVersion = objAgent.substring(objOffsetVersion+7); 
+	if ((objOffsetVersion=objAgent.indexOf("Version"))!=-1) objfullVersion = objAgent.substring(objOffsetVersion+8); 
+} 
+//this statement makes it so that if hide is not true, then it shows the following information//
+if(!hide){
+if (objbrowserName=="Firefox"){
+	displayInfo();}
+else if (objbrowserName=="Seamonkey") {
+	displayInfo();
+}
+else if (objbrowserName=="Chrome"){
+	displayInfo()
+	browserNotSupported();}
+else if (objbrowserName=="Safari") {
+	displayInfo()
+	browserNotSupported();}
+else if (objbrowserName=="Internet Explorer") {	
+	displayInfo()
+	browserNotSupported();}
+else if (objbrowserName=="Opera") {
+	displayInfo()
+	browserNotSupported();}
+else if (objbrowserName=="Avant") {
+	displayInfo()
+	browserMaybeSupported();}
+}
+</script> 
+</head> 
+<body> 
+	<APPLET CODE="Program.class" WIDTH=1500 HEIGHT=350
+</body> 
+</html> 
